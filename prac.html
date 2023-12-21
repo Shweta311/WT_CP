@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NBA Documentation</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+        /* Styling for body */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styling for header */
+header {
+  background-color: #003366;
+  color: #fff;
+  padding: 10px;
+}
+
+/* Styling for navigation bar */
+nav {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+nav a {
+  color: #003366;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #fff;
+  background-color: #003366;
+}
+
+/* Styling for section */
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+/* Styling for table */
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background-color: #003366;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Styling for footer */
+footer {
+  background-color: #003366;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+    </style>
+	<header>
+		<h1>NBA Documentation</h1>
+		<nav>
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Criteria 1</a></li>
+				<li><a href="#">Criteria 2</a></li>
+				<li><a href="#">Criteria 3</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section id="criteria1">
+			<h2>Criteria 1: Vision, Mission, and Program Educational Objectives</h2>
+			<p>Here you can add information about the vision, mission, and program educational objectives of your NBA documentation. This section should provide a clear and concise overview of what your program aims to achieve and how it aligns with the standards set by NBA.</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Column 1</th>
+						<th>Column 2</th>
+						<th>Column 3</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Row 1, Column 1</td>
+						<td>Row 1, Column 2</td>
+						<td>Row 1, Column 3</td>
+					</tr>
+					<tr>
+						<td>Row 2, Column 1</td>
+						<td>Row 2, Column 2</td>
+						<td>Row 2, Column 3</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</main>
+	<footer>
+		<p>&copy; 2023 NBA Documentation. All rights reserved.</p>
+	</footer>
+	<script>
+        // Select the button element
+const button = document.querySelector('#submit-button');
+
+// Add a click event listener to the button
+button.addEventListener('click', () => {
+  // Select the input elements
+  const nameInput = document.querySelector('#name-input');
+  const emailInput = document.querySelector('#email-input');
+  const messageInput = document.querySelector('#message-input');
+
+  // Get the values from the input elements
+  const name = nameInput.value;
+  const email = emailInput.value;
+  const message = messageInput.value;
+
+  // Validate the input values
+  if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+    alert('Please fill out all the fields');
+    return;
+  }
+
+  // Send the form data to the server
+  fetch('/submit-form', {
+    method: 'POST',
+    body: JSON.stringify({
+      name,
+      email,
+      message,
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    alert('Form submitted successfully!');
+    nameInput.value = '';
+    emailInput.value = '';
+    messageInput.value = '';
+  })
+  .catch(error => {
+    console.error('There was a problem submitting the form:', error);
+    alert('There was a problem submitting the form. Please try again later.');
+  });
+});
+
+    </script>
+</body>
+</html>
